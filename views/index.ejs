@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>COVID-19TrackIN | SandeepKrSuman</title>
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Montserrat|Catamaran|Italianno|Patrick+Hand+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Patrick+Hand|Gochi+Hand|Comic+Neue|Mansalva|Ubuntu|Permanent+Marker|Shadows+Into+Light&display=swap" rel="stylesheet">
+
+
+  <!-- Bootstrap css cdn -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Bootstrap js cdn -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!--  FontAwesome CDN -->
+  <script src="https://kit.fontawesome.com/d19811554b.js" crossorigin="anonymous"></script>
+
+
+  <!-- chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+  <section id="country-data" class="main">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"><img src="images/logo.png" width="60" height="60" class="d-inline-block align-top">COVID-19TrackIN</a>
+        <button class="navbar-toggler" type="button" style="width:80px; height:60px;" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse aftercollapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="" data-toggle="modal" data-target="#developerSpeak">Developer Speaks</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Developer speaks -->
+
+      <div class="modal fade" id="developerSpeak" tabindex="-1" role="dialog" aria-labelledby="developerSpeak" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Few words from the Developer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Hello, from <a href="https://www.linkedin.com/in/sandeepkrsuman/">SandeepKrSuman</a> <br><br><br>
+              I have created this website out of my development enthusiasm during this lockdown period due to the Novel Coronavirus Pandemic.<br>
+
+              I hope everyone is safe, staying indoors and maintaining social distancing as it is the only way to defeat Coronavirus menace.
+              <br><br>
+              This website simply shows the number of COVID-19 cases in India. For this purpose it uses the data collected from
+              <a href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare</a> by using this <a href="https://covid19-mohfw.herokuapp.com/">API</a>.
+              <strong> In no means does this website intend to spread chaos or wrong information.</strong> Any error in the displayed data will be a result of wrong data coming from the API.
+              Any such error will be corrected to the earliest as soon as it is encountered.
+              Proper attention is kept to show correct data. However it is advised to check the official website of <a href="https://www.mohfw.gov.in/">MoHFW</a> for the official data.
+              <br><br><br>
+
+              <div class="creditdiv container-fluid">
+                <p><u>Credits</u> :</p>
+                <p>Data and Awareness Banners : <a href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare</a> </p>
+                <p>API used : <a href="https://covid19-mohfw.herokuapp.com/">https://covid19-mohfw.herokuapp.com/</a></p>
+              </div>
+
+              <i class="fas fa-quote-left"></i>  For every development enthusiast out there, I am making this website completely Open Source on github. So what are you
+              waiting for? Show your creativity. And every appreciable creation will be merged to the main website.  <i class="fas fa-quote-right"></i><br><br><br><br>
+
+              <h3 class="quotes">To all Corona Warriors, Thankyou!</h3>
+              <h3 class="quotes">#StayHome #StaySafe</h3>
+
+            </div>
+            <div class="modal-footer">
+              <span style="padding-right:150px;">Contribute to Opensource : <a href="https://github.com/SandeepKrSuman/COVID-19TrackIN" style="color:#000;"><span style="font-size:2rem;"><i class="fab fa-github"></i></span></a> </span>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+
+        <div class="card text-white bg-danger mb-3 col-sm-6 col-md-3">
+          <div class="card-header">Confirmed</div>
+          <div class="card-body">
+            <h2 class="card-title"><%= covidData.totals.total %></h2>
+            <p class="card-text increasedata">[ +<%=tincr%> ]</p>
+          </div>
+        </div>
+
+        <div class="card text-white bg-primary mb-3 col-sm-6 col-md-3">
+          <div class="card-header">Active</div>
+          <div class="card-body">
+            <h2 class="card-title"><%= covidData.totals.cases %></h2>
+            <p class="card-text increasedata"></p>
+          </div>
+        </div>
+
+        <div class="card text-white bg-success mb-3 col-sm-6 col-md-3">
+          <div class="card-header">Recovered</div>
+          <div class="card-body">
+            <h2 class="card-title"><%= covidData.totals.recoveries %></h2>
+            <p class="card-text increasedata">[ +<%=rincr%> ]</p>
+          </div>
+        </div>
+
+        <div class="card text-white bg-dark mb-3 col-sm-6 col-md-3">
+          <div class="card-header">Deaths</div>
+          <div class="card-body">
+            <h2 class="card-title"><%= covidData.totals.deaths %></h2>
+            <p class="card-text increasedata">[ +<%=dincr%> ]</p>
+          </div>
+        </div>
+
+        <span class="lastupdated">Last Updated : <%=updateDate%></span>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="country-graph">
+    <div class="container-fluid">
+      <canvas class="chart1" id="myChart"></canvas>
+      <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+
+          type: 'polarArea',
+
+          data: {
+            labels: ['Total Cases', 'Active Cases', 'Recovered', 'Deaths'],
+            datasets: [{
+
+              data: [ <%= covidData.totals.total %> , <%= covidData.totals.cases %> , <%= covidData.totals.recoveries %> , <%= covidData.totals.deaths %> ],
+              backgroundColor: ['rgb(255,0,0,0.8)',
+                'rgba(54,165,235,1.0)',
+                'rgba(0,255,0,1.0)',
+                'rgba(0,0,0,1.0)'
+              ]
+            }]
+          },
+
+          options: {
+            responsive: true,
+            legend: {
+              position: 'right',
+            },
+            title: {
+              display: true,
+              text: 'COVID-19 Cases in INDIA'
+            },
+            scale: {
+              ticks: {
+                beginAtZero: true
+              },
+              reverse: false
+            },
+            animation: {
+              animateRotate: false,
+              animateScale: true
+            }
+          }
+        });
+      </script>
+    </div>
+  </section>
+
+  <section id="state-data">
+    <div class="container-fluid">
+
+      <table class="table table-color">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">State/UT</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Active</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deaths</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <%var max = covidData.states[0].total;%>
+          <%var pos = 0;%>
+          <%for(var i = 0; i < covidData.states.length; i++){%>
+          <%if(covidData.states[i].total > max){%>
+          <%max=covidData.states[i].total;%>
+          <%pos=i;%>
+          <%}%>
+          <tr>
+            <td class="state-name"><%= covidData.states[i].state %></td>
+          <td><%= covidData.states[i].total %></td>
+          <td><%= covidData.states[i].cases %></td>
+          <td><%= covidData.states[i].recoveries %></td>
+          <td><%= covidData.states[i].deaths %></td>
+          </tr>
+          <%}%>
+
+          <tr>
+            <td colspan="5">*States wise distribution is subject to further verification and reconciliation</td>
+          </tr>
+          <!-- <tr>
+            <td colspan="5">#One case of Jharkhand reassigned to Bihar after reconciliation</td>
+          </tr> -->
+        </tbody>
+      </table>
+
+    </div>
+
+  </section>
+
+  <section class="state-graph">
+    <div class="container-fluid">
+
+      <canvas class="chart2" id="myChart2"></canvas>
+      <script>
+      var ctx = document.getElementById('myChart2').getContext('2d');
+var chart = new Chart(ctx, {
+
+  type: 'bar',
+
+  data: {
+
+      labels: ['Total Cases', 'Active Cases', 'Recovered', 'Deaths'],
+      datasets: [{
+          label: '',
+          data: [<%=covidData.states[pos].total%>, <%=covidData.states[pos].cases%>, <%=covidData.states[pos].recoveries%>, <%=covidData.states[pos].deaths%>],
+          backgroundColor: ['rgb(255,0,0,0.9)',
+          'rgba(54,165,235,1.0)',
+          'rgba(0,255,0,1.0)',
+          'rgba(0,0,0,1.0)']
+          }]
+          },
+
+          options: {
+          responsive: true,
+          title: {
+          display: true,
+          text: 'Most Affected State is <%= covidData.states[pos].state %>'
+          },
+
+          animation: {
+          animateRotate: false,
+          animateScale: true
+          }
+          }
+          });
+          </script>
+
+    </div>
+  </section>
+
+  <hr>
+
+  <h2 class="awrns">#StayHome #StaySafe</h2>
+
+  <section id="awareness">
+    <div class="container-fluid">
+
+      <div class="row awarenessdiv">
+
+        <div class="text-center col-sm-6 col-lg-3 awrdiv">
+          <a href="images/dnd.jpg"><img src="images/dnd.jpg" class="rounded resize-img"></a>
+        </div>
+
+        <div class="text-center col-sm-6 col-lg-3 awrdiv">
+          <a href="images/panicnot.jpg"><img src="images/panicnot.jpg" class="rounded resize-img"></a>
+        </div>
+
+        <div class="text-center col-sm-6 col-lg-3 awrdiv">
+          <a href="images/test.jpg"><img src="images/test.jpg" class="rounded resize-img"></a>
+        </div>
+
+        <div class="text-center col-sm-6 col-lg-3 awrdiv">
+          <a href="images/protect.jpg"><img src="images/protect.jpg" class="rounded resize-img"></a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer class="footersection" id="footer">
+    <h2 class="awrns">Salute to all Corona Warriors at the frontline of #COVID19 response</h2>
+    <span> <a href="#country-data" title="Go To Top"><img class="totop-img" src="images/totop.png"></a></span>
+    <div class="row">
+
+      <div class="col-sm-6 footerdiv datadetail">
+        <p class="footertext"> <strong>Data Source : </strong> <a class="download1" href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare</a> </p>
+        <p class="footertext"><strong><a class="download1" href="https://covid19-mohfw.herokuapp.com/">API </a></strong>used</p>
+        <p class="footertext"> <strong>States & Union Territories : </strong> <a href="https://www.mohfw.gov.in/pdf/coronvavirushelplinenumber.pdf" class="download1">Helpline</a> </p>
+      </div>
+
+      <div class="col-sm-6 footerdiv">
+        <strong class="footertext">Download Aarogya Setu <img src="images/arogya.png"> App :</strong> <br> <br>
+        <button class="download-button btn btn-lg btn-outline-dark btndwn" type="button"><i class="fab fa-apple"></i> <a class="download download1" href="https://bit.ly/iOSAarogyaSetu">Download</a> </button>
+        <button class="download-button btn btn-lg btn-outline-light btndwn" type="button"><i class="fab fa-google-play"></i> <a class="download download2" href="https://bit.ly/AndroidAarogyaSetu">Download</a> </button>
+      </div>
+
+    </div>
+
+
+    <div class="container-fluid cntdiv">
+      <p class="twit footertext"> <a href="https://twitter.com/WHO" class="download1">WHO</a> | <a href="https://twitter.com/MoHFW_INDIA" class="download1">MoHFW</a> | <a href="https://twitter.com/narendramodi" class="download1">Hon'ble PM</a> </p>
+      <p class="developerDetail footertext">Made with ❤ by <a class="devlink" href="https://www.linkedin.com/in/sandeepkrsuman/">SandeepKrSuman</a></p>
+    </div>
+
+  </footer>
+
+  <!--  jQuery's google cdn-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="scrollpoint.jquery.js"></script>
+
+
+
+</body>
+
+</html>

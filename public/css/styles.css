@@ -1,0 +1,264 @@
+body {
+  background-color: #30475e;
+  font-family: "Montserrat-Bold";
+}
+
+hr {
+  border: dotted #588da8 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto 50px;
+}
+
+.chart1 {
+  background-color: #88e1f2;
+}
+
+.chart2 {
+  background-color: #fff;
+}
+
+.container-fluid {
+  padding: 3% 15% 7%;
+}
+
+.row {
+  margin: 0;
+}
+
+/* navigation Bar */
+.navbar {
+  padding: 0 0 4.5rem;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  font-family: "Comic Neue";
+}
+
+.aftercollapse {
+  text-align: center;
+}
+
+.navbar-toggler-icon {
+  width: 100%;
+}
+
+/* Developer speaks */
+.creditdiv {
+  text-align: left;
+}
+
+.quotes {
+  text-align: center;
+}
+
+/* Cards  */
+.card-header {
+  text-align: center;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.increasedata, .lastupdated {
+  font-size: 0.9rem;
+}
+
+/* state data table */
+.table-color {
+  background-color: #0c7b93;
+}
+
+thead {
+  text-align: center;
+}
+
+tbody {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.state-name {
+  text-align: left;
+}
+
+/* Awareness */
+.awrns {
+  text-align: center;
+  font-family: "Comic Neue";
+  color: #fff;
+}
+
+.resize-img {
+  width: 100%;
+}
+
+.awarenessdiv {
+  margin-bottom: 100px;
+}
+
+.awrdiv {
+  margin-top: 50px;
+}
+
+.banner:hover {
+  cursor: pointer;
+}
+
+/* Footer Section */
+.footersection {
+  background-color: #738598;
+  color: black;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 2% 8%;
+}
+
+.footertext {
+  color: black;
+  font-size: 1rem;
+}
+
+.btndwn {
+  margin-right: 0.625em;
+  margin-left: 0.625em;
+  margin-top: 5px;
+}
+
+.footerdiv {
+  margin-top: 3.125em;
+}
+
+.cntdiv {
+  margin: 5%;
+  padding-bottom: 0;
+}
+
+.totop-img {
+  width: 3.125em;
+  height: 3.125em;
+}
+
+.developerDetail {
+  margin-top: 30px;
+  font-family: "Italianno";
+  font-size: 1.7rem;
+}
+
+.devlink {
+  color: #fff;
+  text-decoration: none;
+}
+
+.devlink:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+.download {
+  text-decoration: none;
+}
+
+.download1 {
+  color: #fff;
+}
+
+.download2 {
+  color: #000;
+}
+
+.download1:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.download2:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+
+/* adding media queries */
+@media (max-width: 1028px) {
+  nav {
+    margin: 4%;
+  }
+
+  .main {
+    margin-top: 10%;
+  }
+
+  .navbar-brand {
+    font-size: 3rem;
+  }
+
+  .nav-link, .awrns {
+    font-size: 2.5rem;
+  }
+
+  .modal-content, .developerDetail {
+    font-size: 2rem;
+  }
+
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+  }
+
+  .country-graph, .state-graph {
+    margin-top: 10%;
+  }
+
+  .col-sm-6 {
+    max-width: 100%;
+  }
+
+  .card-header, .footertext, tbody {
+    font-size: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 2.3rem;
+  }
+
+  table {
+    margin-top: 100px;
+  }
+
+  thead {
+    font-size: 1rem;
+  }
+
+  .state-name {
+    text-align: center;
+  }
+
+  .twit {
+    padding-top: 30px;
+  }
+
+  .developerDetail {
+    margin-bottom: 15%;
+  }
+}
+
+@media (max-width: 570px) {
+  .awrdiv {
+    padding: 0;
+    margin: 50px 0 0 0;
+  }
+}
