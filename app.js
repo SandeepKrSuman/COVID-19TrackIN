@@ -17,7 +17,7 @@ const caseSchema = new mongoose.Schema({
   tincrease: Number,
   rincrease: Number,
   dincrease: Number,
-  date: Object
+  date: String
 });
 
 const Case = mongoose.model('Case', caseSchema);
@@ -37,12 +37,16 @@ app.get("/", function(req, res) {
 
         if (found.length === 0) {
 
+          var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+          indiaTime = new Date(indiaTime);
+          var indtime = indiaTime.toLocaleString();
+
           const defaultCase = new Case({
             apidata: covidData,
             tincrease: 0,
             rincrease: 0,
             dincrease: 0,
-            date: Date()
+            date: indtime
           });
 
           defaultCase.save();
@@ -61,12 +65,16 @@ app.get("/", function(req, res) {
               console.log("Last data Deletedfrom DB");
             });
 
+            var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
+            indiaTime = new Date(indiaTime);
+            var indtime = indiaTime.toLocaleString();
+
             const addingnew = new Case({
               apidata: covidData,
               tincrease: tinc,
               rincrease: rinc,
               dincrease: dinc,
-              date: Date()
+              date: indtime
             });
             addingnew.save();
             console.log("New Data added to DB");
