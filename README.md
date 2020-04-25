@@ -1,4 +1,4 @@
-# [COVID-19Track.IN](https://covid-19track.in)
+# [COVID-19Track.IN](http://covid-19track.in)
 
 ![](public/images/websiteview.jpg)
 
@@ -22,7 +22,7 @@ Data is collected from [MoHFW](https://www.mohfw.gov.in/) through this [API](htt
 
      
 ## Developer
-[COVID-19Track.IN](https://covid-19track.in) is developed by [SandeepKrSuman](https://www.linkedin.com/in/sandeepkrsuman/)
+[COVID-19Track.IN](http://covid-19track.in) is developed by [SandeepKrSuman](https://www.linkedin.com/in/sandeepkrsuman/)
 
   <br><br>
 ## #StayHome #StaySafe
