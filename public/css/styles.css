@@ -118,11 +118,11 @@ tbody {
   cursor: pointer;
 }
 
-.awrnscont1{
+.awrnscont1 {
   padding-bottom: 0;
 }
 
-.awrnscont2{
+.awrnscont2 {
   margin-bottom: 0;
 }
 
@@ -227,12 +227,16 @@ tbody {
     margin: 0;
   }
 
-  .card{
-    height: 250px;
+  .card {
+    height: 300px;
   }
 
-  .card-header{
+  .card-header {
     margin-bottom: 35px;
+  }
+
+  .increasedata, .lastupdated {
+    font-size: 1.5rem;
   }
 
   .country-graph, .state-graph {
@@ -244,11 +248,11 @@ tbody {
   }
 
   .card-header, .footertext, tbody {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .card-title {
-    font-size: 2.3rem;
+    font-size: 3rem;
   }
 
   table {
