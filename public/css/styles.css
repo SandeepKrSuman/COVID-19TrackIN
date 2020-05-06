@@ -118,6 +118,14 @@ tbody {
   cursor: pointer;
 }
 
+.awrnscont1{
+  padding-bottom: 0;
+}
+
+.awrnscont2{
+  margin-bottom: 0;
+}
+
 /* Footer Section */
 .footersection {
   background-color: #738598;
@@ -217,6 +225,14 @@ tbody {
   .container-fluid {
     padding: 0;
     margin: 0;
+  }
+
+  .card{
+    height: 250px;
+  }
+
+  .card-header{
+    margin-bottom: 35px;
   }
 
   .country-graph, .state-graph {
