@@ -37,16 +37,17 @@ app.get("/", function(req, res) {
 
         if (found.length === 0) {
 
-          var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
-          indiaTime = new Date(indiaTime);
-          var indtime = indiaTime.toLocaleString();
+          var currentTime = new Date();
+          var currentOffset = currentTime.getTimezoneOffset();
+          var ISTOffset = 330;   // IST offset UTC +5:30
+          var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
 
           const defaultCase = new Case({
             apidata: covidData,
             tincrease: 0,
             rincrease: 0,
             dincrease: 0,
-            date: indtime
+            date: ISTTime
           });
 
           defaultCase.save();
@@ -65,16 +66,17 @@ app.get("/", function(req, res) {
               console.log("Last data Deletedfrom DB");
             });
 
-            var indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
-            indiaTime = new Date(indiaTime);
-            var indtime = indiaTime.toLocaleString();
+            var currentTime = new Date();
+            var currentOffset = currentTime.getTimezoneOffset();
+            var ISTOffset = 330;   // IST offset UTC +5:30
+            var ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
 
             const addingnew = new Case({
               apidata: covidData,
               tincrease: tinc,
               rincrease: rinc,
               dincrease: dinc,
-              date: indtime
+              date: ISTTime
             });
             addingnew.save();
             console.log("New Data added to DB");
