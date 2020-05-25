@@ -14,9 +14,8 @@ After setup, server will start on port `3000` which can be accessed through <htt
 <br>
 
 ## API
-<https://covid19-mohfw.herokuapp.com/> 
+<https://api.covid19india.org/> 
 
-Data is collected from [MoHFW](https://www.mohfw.gov.in/) through this [API](https://covid19-mohfw.herokuapp.com/)
 
 <br>
 
