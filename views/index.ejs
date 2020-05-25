@@ -215,8 +215,8 @@
           <%max=parseInt(covidData.statewise[i].confirmed);%>
           <%pos=i;%>
           <%}%>
-          <tr>
-          <td class="state-name"><a data-toggle="modal" href="#<%= covidData.statewise[i].statecode %>" class="district-target"><i class="fas fa-angle-right"></i><span class="tspan"><%= covidData.statewise[i].state %></span></a></td>
+          <tr data-toggle="modal" data-target="#<%= covidData.statewise[i].statecode %>" class="district-target">
+          <td class="state-name"><i class="fas fa-angle-right"></i><span class="tspan"><%= covidData.statewise[i].state %></span></td>
           <td><span class="tspan"> <%if(parseInt(covidData.statewise[i].deltaconfirmed) > 0){%>
             <span class="delta-text-cnf"><i class="fas fa-arrow-up"></i><%=covidData.statewise[i].deltaconfirmed%></span>
           <%}%>
