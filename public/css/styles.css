@@ -63,36 +63,147 @@ hr {
   text-align: center;
 }
 
-/* Cards  */
-.card-header {
+.mdl-bdy {
+  margin: 5%;
+}
+
+/* country data cards */
+.casecard {
+  display: inline-block;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 20%;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  text-align: center;
+  line-height: 2.5;
+  margin: 1.5%;
+  transition: 0.4s;
+}
+
+.card-ttl {
+  text-align: center;
+  font-weight: bold;
+  font-family: arial;
+  font-size: 1.3rem;
+}
+
+.card-case {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.card-inc {
+  font-size: 1rem;
+}
+
+.card-inc-actv {
+  color: #a5c9fd;
+}
+
+.card-1 {
+  background-color: #ff8582;
+  color: #5a0502;
+}
+
+.card-2 {
+  background-color: #a5c9fd;
+  color: #002c56;
+}
+
+.card-3 {
+  background-color: #9ae69c;
+  color: #015b25;
+}
+
+.card-4 {
+  background-color: #888888;
+  color: #000000;
+}
+
+.casecard:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.col-sm-3 {
   text-align: center;
 }
 
-.card-body {
-  text-align: center;
-}
-
-.increasedata, .lastupdated {
-  font-size: 0.9rem;
+.last-updated {
+  text-align: right;
+  font-size: 1.2rem;
+  font-family: "Comic Neue";
+  color: rgba(255, 255, 255, .5);
+  margin: 3%;
 }
 
 /* state data table */
 .table-color {
-  background-color: #0c7b93;
+  background-color: #30475e;
 }
 
 thead {
   text-align: center;
+  font-family: 'Montserrat';
+}
+
+th {
+  position: sticky;
+  top: 0;
 }
 
 tbody {
   text-align: center;
-  color: white;
+  color: #fff;
   font-size: 1.2rem;
+  font-family: 'Montserrat';
 }
 
 .state-name {
   text-align: left;
+}
+
+.tspan {
+  background-color: #343a40;
+  margin-left: 3%;
+  border-radius: 10%;
+}
+
+.district-target {
+  text-decoration: none;
+  color: #fff;
+}
+
+.district-target:hover {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dis-modal-title {
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: 'Montserrat';
+}
+
+.delta-text-cnf {
+  font-family: 'Montserrat';
+  font-size: 0.6rem;
+  color: #eb6383;
+}
+
+.delta-text-rec {
+  font-family: 'Montserrat';
+  font-size: 0.6rem;
+  color: #85ef47;
+}
+
+.delta-text-death {
+  font-family: 'Montserrat';
+  font-size: 0.6rem;
+  color: #888888;
 }
 
 /* Awareness */
@@ -222,6 +333,29 @@ tbody {
     font-size: 2rem;
   }
 
+  .modal-dialog {
+    max-width: 100%;
+    max-height: 90%;
+    margin-top: 10%;
+  }
+
+  .modal-title {
+    line-height: 3;
+    font-size: 1.5rem;
+  }
+
+  .close {
+    font-size: 3rem;
+  }
+
+  .modal-close-btn {
+    padding: 3%;
+  }
+
+  .dis-modal-title {
+    font-size: 2.5rem;
+  }
+
   .container-fluid {
     padding: 0;
     margin: 0;
@@ -263,10 +397,13 @@ tbody {
     font-size: 1rem;
   }
 
-  .state-name {
-    text-align: center;
+  .delta-text-cnf, .delta-text-rec, .delta-text-death {
+    font-size: 0.8rem
   }
 
+  /* .state-name {
+    text-align: center;
+  } */
   .twit {
     padding-top: 30px;
   }

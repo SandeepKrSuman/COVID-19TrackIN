@@ -2,6 +2,3 @@
 npm-debug.log
 .DS_Store
 /*.env
-/.db.js
-db.js
-.db.js
