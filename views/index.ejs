@@ -137,9 +137,325 @@
 <div class="last-updated">
   Last Updated : <%= covidData.statewise[0].lastupdatedtime %>
 </div>
+<div class="last-updated">
+  <span class="visualize-spread" data-toggle="modal" data-target="#growthTrends">Visualize Spread Trends <i class="fas fa-chevron-right"></i></span>
+</div>
 
     </div>
   </section>
+
+
+  <!-- Growth Trends modal -->
+
+  <div class="modal fade" id="growthTrends" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+       <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h5 class="modal-title dis-modal-title" id="exampleModalLongTitle">Spread Trends</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button>
+           </div>
+           <div class="modal-body">
+             <div class="mdl-bdy">
+
+               <canvas class="growthtrendchart" id="growthcnf" style="background-color: rgba(255,7,58,.12549)"></canvas>
+               <canvas class="growthtrendchart" id="growthrec" style="background-color: rgba(40,167,69,.12549);"></canvas>
+               <canvas class="growthtrendchart" id="growthdeath" style="background-color: rgba(108,117,125,.0627451);"></canvas>
+               <script>
+               var ctx = document.getElementById('growthcnf').getContext('2d');
+               var chart = new Chart(ctx, {
+                   type : 'line',
+                   data : {
+                       labels : [
+                         <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                         "<%= covidData.cases_time_series[p].date %>",
+                         <%}%>
+                           ],
+                        datasets : [
+                            {
+                                backgroundColor : 'rgb(255, 7, 58)',
+                                borderColor : 'rgb(255, 7, 58)',
+                                label : "",
+                                data : [
+                                    <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                                    "<%= covidData.cases_time_series[p].totalconfirmed %>",
+                                    <%}%>
+                                    ],
+                                fill: false,
+
+                            }
+                            ]
+
+                   },
+
+                   options: {
+                       responsive: true,
+                       legend: {
+                           display: false
+
+                       },
+				        title: {
+				            display: true,
+					        text: 'Confirmed Cases Growth Trend',
+                  fontSize: 18,
+                  fontFamily: "Montserrat"
+				        },
+				        tooltips: {
+					    mode: 'index',
+					    intersect: false,
+
+				        },
+				        hover: {
+				            mode: 'nearest',
+				            intersect: true
+
+				        },
+				        scales: {
+				            xAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+
+				                }
+
+				            }],
+				            yAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+                              },
+                        ticks: {
+                                beginAtZero: true,
+                                stepSize: 50000,
+                                min: 0,
+                                max: 300000
+                              }
+
+				            }]
+
+				        }
+
+                   }
+
+               });
+               </script>
+
+               <script>
+               var ctx = document.getElementById('growthrec').getContext('2d');
+               var chart = new Chart(ctx, {
+                   type : 'line',
+                   data : {
+                       labels : [
+                         <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                         "<%= covidData.cases_time_series[p].date %>",
+                         <%}%>
+                           ],
+                        datasets : [
+                            {
+                                backgroundColor : 'rgb(40, 167, 69)',
+                                borderColor : 'rgb(40, 167, 69)',
+                                label : "",
+                                data : [
+                                    <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                                    "<%= covidData.cases_time_series[p].totalrecovered %>",
+                                    <%}%>
+                                    ],
+                                fill: false,
+
+                            }
+                            ]
+
+                   },
+
+                   options: {
+                       responsive: true,
+                       legend: {
+                           display: false
+
+                       },
+				        title: {
+				            display: true,
+					        text: 'Recovered Cases Growth Trend',
+                  fontSize: 18,
+                  fontFamily: "Montserrat"
+				        },
+				        tooltips: {
+					    mode: 'index',
+					    intersect: false,
+
+				        },
+				        hover: {
+				            mode: 'nearest',
+				            intersect: true
+
+				        },
+				        scales: {
+				            xAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+
+				                }
+
+				            }],
+				            yAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+				                },
+                        ticks: {
+                          beginAtZero: true,
+                          stepSize: 50000,
+                          min: 0,
+                          max: 300000
+                        }
+
+				            }]
+
+				        }
+
+                   }
+
+               });
+               </script>
+
+               <script>
+               var ctx = document.getElementById('growthdeath').getContext('2d');
+               var chart = new Chart(ctx, {
+                   type : 'line',
+                   data : {
+                       labels : [
+                         <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                         "<%= covidData.cases_time_series[p].date %>",
+                         <%}%>
+                           ],
+                        datasets : [
+                            {
+                                backgroundColor : 'rgba(136, 136, 136, 1)',
+                                borderColor : 'rgba(136, 136, 136, 1)',
+                                label : "",
+                                data : [
+                                    <%for(var p = 0; p < covidData.cases_time_series.length; p++){%>
+                                    "<%= covidData.cases_time_series[p].totaldeceased %>",
+                                    <%}%>
+                                    ],
+                                fill: false,
+
+                            }
+                            ]
+
+                   },
+
+                   options: {
+                       responsive: true,
+                       legend: {
+                           display: false
+
+                       },
+				        title: {
+				            display: true,
+					        text: 'Deaths Growth Trend',
+                  fontSize: 18,
+                  fontFamily: "Montserrat"
+				        },
+				        tooltips: {
+					    mode: 'index',
+					    intersect: false,
+
+				        },
+				        hover: {
+				            mode: 'nearest',
+				            intersect: true
+
+				        },
+				        scales: {
+				            xAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+
+				                }
+
+				            }],
+				            yAxes: [{
+				                gridLines: {
+                                display : true,
+                                zeroLineColor : 'rgb(0, 0, 0)',
+                                zeroLineWidth : 1,
+                                lineWidth : 0
+				                },
+                        ticks: {
+                          beginAtZero: true,
+                          stepSize: 50000,
+                          min: 0,
+                          max: 300000
+                        }
+
+				            }]
+
+				        }
+
+                   }
+
+               });
+               </script>
+
+               <hr>
+
+               <h2 class="awrns" style="color: #000;"><i class="fas fa-hand-point-down"></i> Spread Trend of Past 30 Days <i class="fas fa-hand-point-down"></i></h2>
+
+
+                   <table class="table table-borderless table-striped" style="margin-top: 10%;">
+                     <thead class="thead-dark">
+                       <tr>
+                         <th class="state-name" style="padding-left:50px;">Dates</th>
+                         <th>Total Confirmed</th>
+                         <th>Total Recovered</th>
+                         <th>Total Deaths</th>
+                       </tr>
+                     </thead>
+                     <tbody style="color: #000;">
+
+                         <%for(var p = (covidData.cases_time_series.length - 1) ; p >= (covidData.cases_time_series.length - 31) ; p--){%>
+
+                         <tr>
+                             <td> <%= covidData.cases_time_series[p].date %> </td>
+
+                             <td> <%= covidData.cases_time_series[p].totalconfirmed %> <br> <span class="delta-text-cnf" style="color: red;">[ <i class="fas fa-arrow-up"></i> <%= covidData.cases_time_series[p].dailyconfirmed %> ] </span> </td>
+
+                             <td> <%= covidData.cases_time_series[p].totalrecovered %> <br> <span class="delta-text-cnf" style="color: #79d70f;">[ <i class="fas fa-arrow-up"></i> <%= covidData.cases_time_series[p].dailyrecovered %> ] </span> </td>
+
+                             <td> <%= covidData.cases_time_series[p].totaldeceased %> <br> <span class="delta-text-cnf" style="color: #393e46;">[ <i class="fas fa-arrow-up"></i> <%= covidData.cases_time_series[p].dailydeceased %> ] </span> </td>
+                         </tr>
+
+                         <%}%>
+
+
+                     </tbody>
+                   </table>
+
+             </div>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-secondary btn-lg modal-close-btn" data-dismiss="modal">Close</button>
+           </div>
+         </div>
+       </div>
+       </div>
+
+
+<!-- polarArea graph for country data -->
 
   <section class="country-graph">
     <div class="container-fluid">
@@ -155,7 +471,7 @@
             datasets: [{
 
               data: [ <%= covidData.statewise[0].confirmed %> , <%= covidData.statewise[0].active %> , <%= covidData.statewise[0].recovered %> , <%= covidData.statewise[0].deaths %> ],
-              backgroundColor: ['rgb(255,0,0,0.8)',
+              backgroundColor: ['rgba(255,0,0,0.8)',
                 'rgba(54,165,235,1.0)',
                 'rgba(0,255,0,1.0)',
                 'rgba(0,0,0,1.0)'
@@ -192,7 +508,7 @@
     <div class="container-fluid">
 
 
-      <table class="table table-color table-borderless table-striped">
+      <table class="table table-color table-borderless table-striped table-shadow">
         <thead class="thead-dark">
           <tr>
             <th class="state-name" style="padding-left:50px;">State/UT</th>
@@ -286,9 +602,28 @@
 
                    options: {
                    responsive: true,
+                   legend: {
+                     display: false
+                   },
                    title: {
                    display: true,
                    text: 'COVID situation in <%= disCovidData[j].state %>'
+                   },
+                   scales: {
+                     xAxes: [{
+                       gridLines: {
+                         display : true,
+                         zeroLineWidth : 1,
+                         lineWidth : 0
+                       }
+                     }],
+                     yAxes: [{
+                       gridLines: {
+                         display : true,
+                         zeroLineWidth : 1,
+                         lineWidth : 0
+                       }
+                     }]
                    },
 
                    animation: {
@@ -328,7 +663,7 @@
                              <td><%= disCovidData[j].districtData[y].active %></td>
 
                              <td> <%if(parseInt(disCovidData[j].districtData[y].delta.recovered) > 0){%>
-                               <span class="delta-text-rec" style="color: rgba(0,255,0,1.0);"><i class="fas fa-arrow-up"></i><%= disCovidData[j].districtData[y].delta.recovered %></span>
+                               <span class="delta-text-rec" style="color: #79d70f;"><i class="fas fa-arrow-up"></i><%= disCovidData[j].districtData[y].delta.recovered %></span>
                              <%}%>
                                <%= disCovidData[j].districtData[y].recovered %>
                              </td>
@@ -358,6 +693,10 @@
 
   </section>
 
+  <hr>
+
+  <h2 class="awrns">Most Affected State is <%= covidData.statewise[pos].state %> </h2>
+
   <section class="state-graph">
     <div class="container-fluid">
 
@@ -383,9 +722,28 @@ var chart = new Chart(ctx, {
 
           options: {
           responsive: true,
+          legend: {
+            display: false
+          },
           title: {
           display: true,
-          text: 'Most Affected State is <%= covidData.statewise[pos].state %>'
+          text: 'COVID situation in <%= covidData.statewise[pos].state %>'
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display : true,
+                zeroLineWidth : 1,
+                lineWidth : 0
+              }
+            }],
+            yAxes: [{
+              gridLines: {
+                display : true,
+                zeroLineWidth : 1,
+                lineWidth : 0
+              }
+            }]
           },
 
           animation: {

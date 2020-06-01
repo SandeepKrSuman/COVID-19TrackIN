@@ -12,10 +12,34 @@ hr {
 
 .chart1 {
   background-color: #88e1f2;
+  display: inline-block;
+  border-radius: 5%;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
 }
 
 .chart2 {
   background-color: #fff;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  border-radius: 5%;
+}
+
+.growthtrendchart {
+  margin-top: 3%;
+  margin-bottom: 4%;
+  border-radius: 3%;
+}
+
+.visualize-spread {
+  background-color: #ff8582;
+  text-align: center;
+  font-family: "Comic Neue";
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1%;
+  border-radius: 20%;
+  cursor: pointer;
 }
 
 .container-fluid {
@@ -142,6 +166,10 @@ hr {
 /* state data table */
 .table-color {
   background-color: #30475e;
+}
+
+.table-shadow {
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
 }
 
 thead {
