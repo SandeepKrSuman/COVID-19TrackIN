@@ -74,6 +74,7 @@
               This website simply shows the number of COVID-19 cases in India. For this purpose it uses the data collected from various platforms such as
               state press bulletins, official (CM, Health M) handles, PBI, Press Trust of India, ANI reports, etc. by using this <a href="https://api.covid19india.org/">API</a> source.
               The data is continuously validated and updated by a group of dedicated volunteers. These data are generally more recent and hence might be different from those of MoHFW data which is updated at a scheduled time.
+              Total samples tested is reported from ICMR data.
 
               <br><br>
               <strong>This website is NOT official and in no means does it intend to spread wrong information.</strong> Any error while displaying the data coming from the API, due to any technical issue, will be corrected to the earliest as soon as it is encountered.
@@ -86,6 +87,8 @@
                 <p>API source : <a href="https://api.covid19india.org/">https://api.covid19india.org/</a></p>
                 <p>Kudos to : <a href="https://www.covid19india.org/">https://www.covid19india.org/</a> for their dedicated efforts.</p>
               </div>
+
+              <br><br><br>
 
               <i class="fas fa-quote-left"></i>  For every development enthusiast out there, I am making this website completely Open Source on github. So what are you
               waiting for? Show your creativity. Contribute to the open source or create your own.  <i class="fas fa-quote-right"></i><br><br><br><br>
@@ -107,39 +110,76 @@
     <div class="col-xs-6 col-sm-3">
         <div class="casecard card-1">
             <div class="card-ttl"> Confirmed </div>
-            <div class="card-case"><%=covidData.statewise[0].confirmed%></div>
+            <div class="card-case" id="addcomma1"><%=covidData.statewise[0].confirmed%></div>
             <div class="card-inc">[ +<%=covidData.statewise[0].deltaconfirmed%> ]</div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="casecard card-2">
             <div class="card-ttl"> Active </div>
-            <div class="card-case"><%= covidData.statewise[0].active %></div>
+            <div class="card-case" id="addcomma2"><%= covidData.statewise[0].active %></div>
             <div class="card-inc-actv">.</div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="casecard card-3">
             <div class="card-ttl"> Recovered </div>
-            <div class="card-case"><%= covidData.statewise[0].recovered %></div>
+            <div class="card-case" id="addcomma3"><%= covidData.statewise[0].recovered %></div>
             <div class="card-inc">[ +<%= covidData.statewise[0].deltarecovered %> ]</div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="casecard card-4">
             <div class="card-ttl"> Deaths </div>
-            <div class="card-case"><%= covidData.statewise[0].deaths %></div>
+            <div class="card-case" id="addcomma4"><%= covidData.statewise[0].deaths %></div>
             <div class="card-inc">[ +<%= covidData.statewise[0].deltadeaths %> ]</div>
         </div>
     </div>
 </div>
 
-<div class="last-updated">
-  Last Updated : <%= covidData.statewise[0].lastupdatedtime %>
+<% var testedCase = covidData.tested[covidData.tested.length-1].totalsamplestested; %>
+<% var mn = (covidData.tested[covidData.tested.length-1].updatetimestamp).substring(3,5); %>
+<% if(mn === "01") mn = "Jan"; else if(mn === "02") mn = "Feb"; else if(mn === "03") mn = "March"; else if(mn === "04") mn = "April"; else if(mn === "05") mn = "May";
+else if(mn === "06") mn = "June"; else if(mn === "07") mn = "July"; else if(mn === "08") mn = "August"; else if(mn === "09") mn = "Sept"; else if(mn === "10") mn = "Oct";
+else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
+<% var testdate = (covidData.tested[covidData.tested.length-1].updatetimestamp).substring(0,2) +" "+ mn; %>
+
+<div class="row" style="margin-top: 10%;">
+  <div class="col-sm-6" style="text-align: right; border-right: 1px solid #588da8;">
+    <div class="tested">
+      <h4>Tested</h4>
+      <h3 id="addcomma5"><%= testedCase %></h3>
+      <h6>As of <%= testdate %></h6>
+    </div>
+  </div>
+  <div class="col-sm-6" style="text-align: left;">
+    <div class="last-updated">
+      Last Updated : <%= covidData.statewise[0].lastupdatedtime %>
+    </div>
+    <div class="last-updated">
+      <span class="visualize-spread" data-toggle="modal" data-target="#growthTrends">Visualize Spread Trends <i class="fas fa-chevron-right"></i></span>
+    </div>
+  </div>
 </div>
-<div class="last-updated">
-  <span class="visualize-spread" data-toggle="modal" data-target="#growthTrends">Visualize Spread Trends <i class="fas fa-chevron-right"></i></span>
-</div>
+
+<script>
+    var comma1 = <%= covidData.statewise[0].confirmed%>;
+    var comma2 = <%= covidData.statewise[0].active %>;
+    var comma3 = <%= covidData.statewise[0].recovered %>;
+    var comma4 = <%= covidData.statewise[0].deaths %>;
+    var comma5 = <%= testedCase %>;
+
+    document.getElementById('addcomma1').innerHTML = addcomma(comma1);
+    document.getElementById('addcomma2').innerHTML = addcomma(comma2);
+    document.getElementById('addcomma3').innerHTML = addcomma(comma3);
+    document.getElementById('addcomma4').innerHTML = addcomma(comma4);
+    document.getElementById('addcomma5').innerHTML = addcomma(comma5);
+
+    function addcomma(num){
+      var newnum = parseInt(num).toLocaleString("en-IN");
+      return newnum;
+    }
+</script>
 
     </div>
   </section>
