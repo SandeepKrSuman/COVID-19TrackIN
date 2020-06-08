@@ -111,7 +111,11 @@
         <div class="casecard card-1">
             <div class="card-ttl"> Confirmed </div>
             <div class="card-case" id="addcomma1"><%=covidData.statewise[0].confirmed%></div>
-            <div class="card-inc">[ +<%=covidData.statewise[0].deltaconfirmed%> ]</div>
+            <div class="card-inc">
+              <%if(parseInt(covidData.statewise[0].deltaconfirmed) >= 0){%>
+                [ +<%=covidData.statewise[0].deltaconfirmed%> ]
+              <%}%>
+            </div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
@@ -125,14 +129,22 @@
         <div class="casecard card-3">
             <div class="card-ttl"> Recovered </div>
             <div class="card-case" id="addcomma3"><%= covidData.statewise[0].recovered %></div>
-            <div class="card-inc">[ +<%= covidData.statewise[0].deltarecovered %> ]</div>
+            <div class="card-inc">
+              <%if(parseInt(covidData.statewise[0].deltarecovered) >= 0){%>
+                [ +<%= covidData.statewise[0].deltarecovered %> ]
+              <%}%>
+            </div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3">
         <div class="casecard card-4">
             <div class="card-ttl"> Deaths </div>
             <div class="card-case" id="addcomma4"><%= covidData.statewise[0].deaths %></div>
-            <div class="card-inc">[ +<%= covidData.statewise[0].deltadeaths %> ]</div>
+            <div class="card-inc">
+              <%if(parseInt(covidData.statewise[0].deltadeaths) >= 0){%>
+                [ +<%= covidData.statewise[0].deltadeaths %> ]
+              <%}%>
+            </div>
         </div>
     </div>
 </div>
@@ -273,7 +285,7 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                                 beginAtZero: true,
                                 stepSize: 50000,
                                 min: 0,
-                                max: 300000
+                                max: 400000
                               }
 
 				            }]
@@ -356,7 +368,7 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                           beginAtZero: true,
                           stepSize: 50000,
                           min: 0,
-                          max: 300000
+                          max: 400000
                         }
 
 				            }]
@@ -439,7 +451,7 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                           beginAtZero: true,
                           stepSize: 50000,
                           min: 0,
-                          max: 300000
+                          max: 400000
                         }
 
 				            }]
@@ -526,7 +538,9 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
             },
             title: {
               display: true,
-              text: 'COVID-19 Cases in INDIA'
+              text: 'COVID-19 Cases in INDIA',
+              fontSize: 18,
+              fontFamily: "Montserrat"
             },
             scale: {
               ticks: {
@@ -573,22 +587,31 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
           <%}%>
           <tr data-toggle="modal" data-target="#<%= covidData.statewise[i].statecode %>" class="district-target">
           <td class="state-name"><i class="fas fa-angle-right"></i><span class="tspan"><%= covidData.statewise[i].state %></span></td>
-          <td><span class="tspan"> <%if(parseInt(covidData.statewise[i].deltaconfirmed) > 0){%>
-            <span class="delta-text-cnf"><i class="fas fa-arrow-up"></i><%=covidData.statewise[i].deltaconfirmed%></span>
-          <%}%>
-          <%= covidData.statewise[i].confirmed %></span></td>
+          <td>
+            <span class="tspan"><%= covidData.statewise[i].confirmed %></span>
+            <br>
+            <%if(parseInt(covidData.statewise[i].deltaconfirmed) > 0){%>
+              <span class="delta-text-cnf">[ <i class="fas fa-arrow-up"></i> <%=covidData.statewise[i].deltaconfirmed%> ]</span>
+            <%}%>
+          </td>
 
           <td><span class="tspan"><%= covidData.statewise[i].active %></span></td>
 
-          <td><span class="tspan"> <%if(parseInt(covidData.statewise[i].deltarecovered) > 0){%>
-            <span class="delta-text-rec"><i class="fas fa-arrow-up"></i><%=covidData.statewise[i].deltarecovered%></span>
+          <td>
+            <span class="tspan"><%= covidData.statewise[i].recovered %></span>
+            <br>
+            <%if(parseInt(covidData.statewise[i].deltarecovered) > 0){%>
+              <span class="delta-text-rec">[ <i class="fas fa-arrow-up"></i> <%=covidData.statewise[i].deltarecovered%> ]</span>
             <%}%>
-            <%= covidData.statewise[i].recovered %></span></td>
+          </td>
 
-          <td><span class="tspan"> <%if(parseInt(covidData.statewise[i].deltadeaths) > 0){%>
-            <span class="delta-text-death"><i class="fas fa-arrow-up"></i><%=covidData.statewise[i].deltadeaths%></span>
+          <td>
+            <span class="tspan"><%= covidData.statewise[i].deaths %></span>
+            <br>
+            <%if(parseInt(covidData.statewise[i].deltadeaths) > 0){%>
+              <span class="delta-text-death">[ <i class="fas fa-arrow-up"></i> <%=covidData.statewise[i].deltadeaths%> ]</span>
             <%}%>
-            <%= covidData.statewise[i].deaths %></span></td>
+          </td>
           </tr>
           <%}%>
 
@@ -767,7 +790,9 @@ var chart = new Chart(ctx, {
           },
           title: {
           display: true,
-          text: 'COVID situation in <%= covidData.statewise[pos].state %>'
+          text: 'COVID situation in <%= covidData.statewise[pos].state %>',
+          fontSize: 18,
+          fontFamily: "Montserrat"
           },
           scales: {
             xAxes: [{
