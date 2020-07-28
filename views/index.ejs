@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+
   <title>Coronavirus COVID-19 Cases in India - covid-19track.in</title>
 
   <meta name="title" content="Coronavirus COVID-19 Cases in India: State and District">
@@ -12,8 +13,8 @@
   <link rel="icon" href="images/favicon.ico">
 
   <!-- google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Handlee|Montserrat|Catamaran|Italianno|Patrick+Hand+SC|Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet preload" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Lobster|Patrick+Hand|Gochi+Hand|Comic+Neue|Mansalva|Ubuntu|Permanent+Marker|Shadows+Into+Light&display=swap" rel="stylesheet preload" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Montserrat|Catamaran|Italianno|Patrick+Hand+SC|Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Patrick+Hand|Gochi+Hand|Comic+Neue|Mansalva|Ubuntu|Permanent+Marker|Shadows+Into+Light&display=swap" rel="stylesheet" crossorigin>
 
 
   <!-- Bootstrap css cdn -->
@@ -31,7 +32,7 @@
   <!-- chart.js CDN -->
   <script rel="preconnect" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
-  <link rel="stylesheet preload" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
@@ -83,18 +84,14 @@
 
               <div class="creditdiv container-fluid">
                 <p><u>Credits</u> :</p>
-                <p>Awareness Banners and Helplines : <a href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare</a> </p>
+                <p>Helplines : <a href="https://www.mohfw.gov.in/">Ministry of Health and Family Welfare</a> </p>
                 <p>API source : <a href="https://api.covid19india.org/">https://api.covid19india.org/</a></p>
                 <p>Kudos to : <a href="https://www.covid19india.org/">https://www.covid19india.org/</a> for their dedicated efforts.</p>
               </div>
 
               <br><br><br>
 
-              <i class="fas fa-quote-left"></i>  For every development enthusiast out there, I am making this website completely Open Source on github. So what are you
-              waiting for? Show your creativity. Contribute to the open source or create your own.  <i class="fas fa-quote-right"></i><br><br><br><br>
-
               <h3 class="quotes">To all Corona Warriors, Thankyou!</h3>
-              <h3 class="quotes">#StayHome #StaySafe</h3>
             </div>
             </div>
             <div class="modal-footer">
@@ -105,6 +102,8 @@
         </div>
       </div>
 
+
+<!-- country data cards -->
 
       <div class="row">
     <div class="col-xs-6 col-sm-3">
@@ -149,12 +148,15 @@
     </div>
 </div>
 
+<!-- formatting tested date -->
+
 <% var testedCase = covidData.tested[covidData.tested.length-1].totalsamplestested; %>
-<% var mn = (covidData.tested[covidData.tested.length-1].updatetimestamp).substring(3,5); %>
-<% if(mn === "01") mn = "Jan"; else if(mn === "02") mn = "Feb"; else if(mn === "03") mn = "March"; else if(mn === "04") mn = "April"; else if(mn === "05") mn = "May";
-else if(mn === "06") mn = "June"; else if(mn === "07") mn = "July"; else if(mn === "08") mn = "August"; else if(mn === "09") mn = "Sept"; else if(mn === "10") mn = "Oct";
-else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
-<% var testdate = (covidData.tested[covidData.tested.length-1].updatetimestamp).substring(0,2) +" "+ mn; %>
+<% var mn; %>
+<% if ((covidData.tested[covidData.tested.length-1].testedasof).substring(3,4) > 0) mn = parseInt((covidData.tested[covidData.tested.length-1].testedasof).substring(3,5));  else if((covidData.tested[covidData.tested.length-1].testedasof).substring(3,4) === "0") mn = parseInt((covidData.tested[covidData.tested.length-1].testedasof).substring(4,5)); %>
+<% var month = ["","Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]; %>
+<% var testdate = (covidData.tested[covidData.tested.length-1].testedasof).substring(0,2) +" "+ month[mn]; %>
+
+<!-- tested and visualize data -->
 
 <div class="row" style="margin-top: 10%;">
   <div class="col-sm-6" style="text-align: right; border-right: 1px solid #588da8;">
@@ -162,6 +164,7 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
       <h4>Tested</h4>
       <h3 id="addcomma5"><%= testedCase %></h3>
       <h6>As of <%= testdate %></h6>
+      <h6 style="color: #4b5d67;"><a href="<%= covidData.tested[covidData.tested.length-1].source %>" target="_blank"><i class="fas fa-link"></i></a></h6>
     </div>
   </div>
   <div class="col-sm-6" style="text-align: left;">
@@ -173,6 +176,8 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
     </div>
   </div>
 </div>
+
+<!-- fomatting data with commas -->
 
 <script>
     var comma1 = <%= covidData.statewise[0].confirmed%>;
@@ -215,6 +220,19 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                <canvas class="growthtrendchart" id="growthrec" style="background-color: rgba(40,167,69,.12549);"></canvas>
                <canvas class="growthtrendchart" id="growthdeath" style="background-color: rgba(108,117,125,.0627451);"></canvas>
                <script>
+               <%var lastcnf = covidData.cases_time_series[covidData.cases_time_series.length - 1].totalconfirmed; %>
+               <%var bound = (parseInt(lastcnf.substring(0,1)) + 1) * (Math.pow(10, lastcnf.length-1)); %>
+               <%if(bound > 300000 && bound <= 600000){ var stepup = 100000; var upbound = bound; }%>
+               <%if(bound > 600000 && bound <= 900000){ var stepup = 150000; var upbound = Math.ceil(bound/150000) * 150000; }%>
+               <%if(bound > 900000 && bound <= 1200000){ var stepup = 200000; var upbound = Math.ceil(bound/200000) * 200000; }%>
+               <%if(bound > 1200000 && bound <= 1500000){ var stepup = 250000; var upbound = Math.ceil(bound/250000) * 250000; }%>
+               <%if(bound > 1500000 && bound <= 1800000){ var stepup = 300000; var upbound = Math.ceil(bound/300000) * 300000; }%>
+               <%if(bound > 1800000 && bound <= 2100000){ var stepup = 350000; var upbound = Math.ceil(bound/350000) * 350000; }%>
+               <%if(bound > 2100000 && bound <= 2400000){ var stepup = 400000; var upbound = Math.ceil(bound/400000) * 400000; }%>
+               <%if(bound > 2400000 && bound <= 2700000){ var stepup = 450000; var upbound = Math.ceil(bound/450000) * 450000; }%>
+               <%if(bound > 2700000 && bound <= 3000000){ var stepup = 500000; var upbound = Math.ceil(bound/500000) * 500000; }%>
+               <%if(bound > 3000000 || bound < 300000){ var stepup = 50000; var upbound = bound }%>
+
                var ctx = document.getElementById('growthcnf').getContext('2d');
                var chart = new Chart(ctx, {
                    type : 'line',
@@ -256,12 +274,13 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 				        tooltips: {
 					    mode: 'index',
 					    intersect: false,
+              titleFontSize: 18,
+              bodyFontSize: 20
 
 				        },
 				        hover: {
 				            mode: 'nearest',
 				            intersect: true
-
 				        },
 				        scales: {
 				            xAxes: [{
@@ -283,9 +302,9 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                               },
                         ticks: {
                                 beginAtZero: true,
-                                stepSize: 50000,
+                                stepSize: <%= stepup %>,
                                 min: 0,
-                                max: 400000
+                                max: <%= upbound %>
                               }
 
 				            }]
@@ -339,6 +358,8 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 				        tooltips: {
 					    mode: 'index',
 					    intersect: false,
+              titleFontSize: 18,
+              bodyFontSize: 20
 
 				        },
 				        hover: {
@@ -366,9 +387,9 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 				                },
                         ticks: {
                           beginAtZero: true,
-                          stepSize: 50000,
+                          stepSize: <%= stepup %>,
                           min: 0,
-                          max: 400000
+                          max: <%= upbound %>
                         }
 
 				            }]
@@ -422,6 +443,8 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 				        tooltips: {
 					    mode: 'index',
 					    intersect: false,
+              titleFontSize: 18,
+              bodyFontSize: 20
 
 				        },
 				        hover: {
@@ -449,9 +472,9 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 				                },
                         ticks: {
                           beginAtZero: true,
-                          stepSize: 50000,
+                          stepSize: <%= stepup %>,
                           min: 0,
-                          max: 400000
+                          max: <%= upbound %>
                         }
 
 				            }]
@@ -532,6 +555,10 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
           },
 
           options: {
+            tooltips: {
+          titleFontSize: 18,
+          bodyFontSize: 20
+            },
             responsive: true,
             legend: {
               position: 'right',
@@ -585,6 +612,8 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
           <%max=parseInt(covidData.statewise[i].confirmed);%>
           <%pos=i;%>
           <%}%>
+
+          <% if (parseInt(covidData.statewise[i].confirmed) !== 0){ %>
           <tr data-toggle="modal" data-target="#<%= covidData.statewise[i].statecode %>" class="district-target">
           <td class="state-name"><i class="fas fa-angle-right"></i><span class="tspan"><%= covidData.statewise[i].state %></span></td>
           <td>
@@ -614,6 +643,7 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
           </td>
           </tr>
           <%}%>
+          <%}%>
 
         </tbody>
       </table>
@@ -632,10 +662,11 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
            </div>
            <div class="modal-body">
              <div class="mdl-bdy">
-               <%var lupdt, cnfr, actv, deat, recvr;%>
+               <%var lupdt, cnfr, actv, deat, recvr, statenote;%>
                <%for(var k = 0; k < covidData.statewise.length; k++){%>
                  <%if(disCovidData[j].statecode === covidData.statewise[k].statecode){%>
                    <%lupdt = covidData.statewise[k].lastupdatedtime;%>
+                   <%statenote = covidData.statewise[k].statenotes;%>
                    <%cnfr = covidData.statewise[k].confirmed%>
                    <%actv = covidData.statewise[k].active%>
                    <%deat = covidData.statewise[k].deaths%>
@@ -664,6 +695,10 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                    },
 
                    options: {
+                     tooltips: {
+                   titleFontSize: 18,
+                   bodyFontSize: 20
+                     },
                    responsive: true,
                    legend: {
                      display: false
@@ -698,8 +733,13 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
                    </script>
 
                    <div class="last-updated" style="color: #000;">
-                     Last Updated : <%= covidData.statewise[0].lastupdatedtime %>
+                     Last Updated : <%= lupdt %>
                    </div>
+                   <%if(statenote.length > 0){%>
+                   <div class="last-updated state-note" style="color: #000;">
+                     <i class="far fa-clipboard" style="font-size: 2rem;"></i>   <%= statenote %>
+                   </div>
+                   <%}%>
 
                    <table class="table table-borderless table-striped" style="margin-top: 10%;">
                      <thead class="thead-dark">
@@ -756,131 +796,10 @@ else if(mn === "11") mn = "Nov"; else if(mn === "12") mn = "Dec."; %>
 
   </section>
 
-  <hr>
-
-  <h2 class="awrns">Most Affected State is <%= covidData.statewise[pos].state %> </h2>
-
-  <section class="state-graph">
-    <div class="container-fluid">
-
-      <canvas class="chart2" id="myChart2"></canvas>
-      <script>
-      var ctx = document.getElementById('myChart2').getContext('2d');
-var chart = new Chart(ctx, {
-
-  type: 'bar',
-
-  data: {
-
-      labels: ['Total Cases', 'Active Cases', 'Recovered', 'Deaths'],
-      datasets: [{
-          label: '',
-          data: [<%=covidData.statewise[pos].confirmed%>, <%=covidData.statewise[pos].active%>, <%=covidData.statewise[pos].recovered%>, <%=covidData.statewise[pos].deaths%>],
-          backgroundColor: ['rgb(255,0,0,0.9)',
-          'rgba(54,165,235,1.0)',
-          'rgba(0,255,0,1.0)',
-          'rgba(0,0,0,1.0)']
-          }]
-          },
-
-          options: {
-          responsive: true,
-          legend: {
-            display: false
-          },
-          title: {
-          display: true,
-          text: 'COVID situation in <%= covidData.statewise[pos].state %>',
-          fontSize: 18,
-          fontFamily: "Montserrat"
-          },
-          scales: {
-            xAxes: [{
-              gridLines: {
-                display : true,
-                zeroLineWidth : 1,
-                lineWidth : 0
-              }
-            }],
-            yAxes: [{
-              gridLines: {
-                display : true,
-                zeroLineWidth : 1,
-                lineWidth : 0
-              }
-            }]
-          },
-
-          animation: {
-          animateRotate: false,
-          animateScale: true
-          }
-          }
-          });
-          </script>
-
-    </div>
-  </section>
-
-  <hr>
-
-  <h2 class="awrns">#StayHome #StaySafe</h2>
-
-  <section id="awareness">
-    <div class="container-fluid awrnscont1">
-
-      <div class="row awarenessdiv awrnscont2">
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/dnd.jpg"><img src="images/dnd.jpg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/panicnot.jpg"><img src="images/panicnot.jpg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/test.jpg"><img src="images/test.jpg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/protect.jpg"><img src="images/protect.jpg" class="rounded resize-img"></a>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="container-fluid">
-
-      <div class="row awarenessdiv">
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/immunity.jpeg"><img src="images/immunity.jpeg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/hlthwrk.jpeg"><img src="images/hlthwrk.jpeg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/cgrt.jpeg"><img src="images/cgrt.jpeg" class="rounded resize-img"></a>
-        </div>
-
-        <div class="text-center col-sm-6 col-lg-3 awrdiv">
-          <a href="images/aln.jpeg"><img src="images/aln.jpeg" class="rounded resize-img"></a>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
 
   <footer class="footersection" id="footer">
     <h2 class="awrns">Salute to all Corona Warriors at the frontline of #COVID19 response</h2>
-    <span> <a href="#country-data" title="Go To Top"><img class="totop-img" src="images/totop.png"></a></span>
+    <span> <a href="#top" title="Go To Top"><img class="totop-img" src="images/totop.png"></a></span>
     <div class="row">
 
       <div class="col-sm-6 footerdiv datadetail">
@@ -904,6 +823,13 @@ var chart = new Chart(ctx, {
     </div>
 
   </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+  return false;
+  });
+  </script>
 
 </body>
 

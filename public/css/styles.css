@@ -53,6 +53,16 @@ hr {
   display: inline-block;
 }
 
+.tested h6 a{
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+.tested h6 a:hover{
+  text-decoration: none;
+  outline: none;
+}
+
 .container-fluid {
   padding: 3% 15% 7%;
 }
@@ -171,6 +181,7 @@ hr {
   /* text-align: right; */
   font-size: 1.2rem;
   font-family: "Comic Neue";
+  color: #dbdbdb;
   color: rgba(255, 255, 255, .5);
   margin: 3%;
 }
@@ -246,35 +257,14 @@ tbody {
   color: #888888;
 }
 
+.state-note{
+  padding: 5% 15% 5% 15%;
+}
 /* Awareness */
 .awrns {
   text-align: center;
   font-family: "Comic Neue";
   color: #fff;
-}
-
-.resize-img {
-  width: 100%;
-}
-
-.awarenessdiv {
-  margin-bottom: 100px;
-}
-
-.awrdiv {
-  margin-top: 50px;
-}
-
-.banner:hover {
-  cursor: pointer;
-}
-
-.awrnscont1 {
-  padding-bottom: 0;
-}
-
-.awrnscont2 {
-  margin-bottom: 0;
 }
 
 /* Footer Section */
@@ -409,8 +399,23 @@ tbody {
     margin-bottom: 35px;
   }
 
+  .tested h4{
+    font-size: 1.6rem;
+  }
+  .tested h3{
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .tested h6{
+    font-size: 1rem;
+  }
+
+  .visualize-spread{
+    font-size: 1.8rem;
+  }
+
   .increasedata, .lastupdated {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .country-graph, .state-graph {
@@ -434,11 +439,17 @@ tbody {
   }
 
   thead {
-    font-size: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .district-target{
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    height: 100px;
   }
 
   .delta-text-cnf, .delta-text-rec, .delta-text-death {
-    font-size: 0.8rem
+    font-size: 0.9rem
   }
 
   /* .state-name {
@@ -450,12 +461,5 @@ tbody {
 
   .developerDetail {
     margin-bottom: 15%;
-  }
-}
-
-@media (max-width: 570px) {
-  .awrdiv {
-    padding: 0;
-    margin: 50px 0 0 0;
   }
 }
