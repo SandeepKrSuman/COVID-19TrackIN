@@ -15,7 +15,6 @@
   "dependencies": {
     "ejs": "^3.0.2",
     "express": "^4.17.1",
-    "mongoose": "^5.9.10",
     "request": "^2.88.2"
   }
 }
