@@ -151,10 +151,7 @@
 <!-- formatting tested date -->
 
 <% var testedCase = covidData.tested[covidData.tested.length-1].totalsamplestested; %>
-<% var mn; %>
-<% if ((covidData.tested[covidData.tested.length-1].testedasof).substring(3,4) > 0) mn = parseInt((covidData.tested[covidData.tested.length-1].testedasof).substring(3,5));  else if((covidData.tested[covidData.tested.length-1].testedasof).substring(3,4) === "0") mn = parseInt((covidData.tested[covidData.tested.length-1].testedasof).substring(4,5)); %>
-<% var month = ["","Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]; %>
-<% var testdate = (covidData.tested[covidData.tested.length-1].testedasof).substring(0,2) +" "+ month[mn]; %>
+<% var testdate = covidData.tested[covidData.tested.length-1].testedasof %>
 
 <!-- tested and visualize data -->
 
