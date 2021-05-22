@@ -23,7 +23,7 @@ After setup, server will start on port `3000` which can be accessed through <htt
 
 
 ## Developer
-[COVID-19Track.IN](https://covid-19track.in) is developed by [SandeepKrSuman](https://www.linkedin.com/in/sandeepkrsuman/)
+[COVID-19Track.IN](https://covid19trackin.herokuapp.com/) is developed by [SandeepKrSuman](https://www.linkedin.com/in/sandeepkrsuman/)
 
   <br><br>
 ## #StayHome #StaySafe
