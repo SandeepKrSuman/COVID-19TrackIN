@@ -1,13 +1,10 @@
 # [COVID-19Track.IN](https://covid-19track.in)
 
-```diff
-- Note: The main website ' covid-19track.in ' is no longer available.
-+ To access the app use this url: https://covid19trackin.herokuapp.com/ 
-```
-
 ![](public/images/websiteview.jpg)
 
+---
 
+<p align="center"><strong>This app is build on <a href="https://expressjs.com/">express</a> and uses <a href="https://ejs.co/">ejs templating</a>.</strong></p> 
 
 ## Setup
 
