@@ -1,4 +1,4 @@
-# [COVID-19Track.IN](https://covid-19track.in)
+# [COVID-19Track.IN](https://covid19trackin.herokuapp.com/)
 
 ![](public/images/websiteview.jpg)
 
